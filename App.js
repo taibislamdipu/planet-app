@@ -1,17 +1,21 @@
-import { View, StyleSheet } from 'react-native'
-import React from 'react'
-import { colors } from './src/theme/colors'
-import { spacing } from './src/theme/spacing'
-import { typography } from './src/theme/typography'
-import Text from './src/components/text/text'
-import { useFonts } from 'expo-font';
+import { View, StyleSheet, StatusBar } from "react-native";
+import React from "react";
+import { colors } from "./src/theme/colors";
+import { spacing } from "./src/theme/spacing";
+import { typography } from "./src/theme/typography";
+import Text from "./src/components/text/text";
+import { useFonts } from "expo-font";
+import { DarkTheme, NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./src/screens/home";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   const [loaded] = useFonts({
-    'Antonio-Medium': require('./assets/fonts/Antonio-Medium.ttf'),
-    'LeagueSpartan-Bold': require('./assets/fonts/LeagueSpartan-Bold.ttf'),
-    'LeagueSpartan-Regular': require('./assets/fonts/LeagueSpartan-Regular.ttf'),
+    "Antonio-Medium": require("./assets/fonts/Antonio-Medium.ttf"),
+    "LeagueSpartan-Bold": require("./assets/fonts/LeagueSpartan-Bold.ttf"),
+    "LeagueSpartan-Regular": require("./assets/fonts/LeagueSpartan-Regular.ttf"),
   });
 
   if (!loaded) {
@@ -19,18 +23,19 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text preset="h1" style={{ color: "blue" }}>lorem ipsum dolor sit amet, con</Text>
-      <Text preset="small" style={{ marginTop: spacing[4] }}>Hello, world!</Text>
-    </View>
-  )
+    <>
+      <NavigationContainer theme={DarkTheme}>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar style="light" />
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})
+  },
+});
