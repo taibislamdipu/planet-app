@@ -5,6 +5,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import PlanetHeader from "../components/planet-header";
 import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
+import {
+  EarthSvg,
+  JupiterSvg,
+  MarsSvg,
+  MercurySvg,
+  NeptuneSvg,
+  SaturnSvg,
+  UranusSvg,
+  VenusSvg,
+} from "../svg";
 
 export default function Details({ navigation, route }) {
   const planet = route.params.planet;
@@ -14,61 +24,21 @@ export default function Details({ navigation, route }) {
   const renderImage = (name) => {
     switch (name) {
       case "mercury":
-        return (
-          <Image
-            style={styles.imageSize}
-            source={require("../images/mercury.png")}
-          />
-        );
+        return <MercurySvg />;
       case "venus":
-        return (
-          <Image
-            style={styles.imageSize}
-            source={require("../images/venus.png")}
-          />
-        );
+        return <VenusSvg />;
       case "earth":
-        return (
-          <Image
-            style={styles.imageSize}
-            source={require("../images/earth.png")}
-          />
-        );
+        return <EarthSvg />;
       case "mars":
-        return (
-          <Image
-            style={styles.imageSize}
-            source={require("../images/venus.png")}
-          />
-        );
+        return <MarsSvg />;
       case "jupiter":
-        return (
-          <Image
-            style={styles.imageSize}
-            source={require("../images/venus.png")}
-          />
-        );
+        return <JupiterSvg />;
       case "saturn":
-        return (
-          <Image
-            style={styles.imageSize}
-            source={require("../images/venus.png")}
-          />
-        );
+        return <SaturnSvg />;
       case "uranus":
-        return (
-          <Image
-            style={styles.imageSize}
-            source={require("../images/venus.png")}
-          />
-        );
+        return <UranusSvg />;
       case "neptune":
-        return (
-          <Image
-            style={styles.imageSize}
-            source={require("../images/venus.png")}
-          />
-        );
+        return <NeptuneSvg />;
     }
   };
 
